@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+
+name="OpenSnitch daemon"
+description="OpenSnitch is a GNU/Linux port of the Little Snitch application firewall"
+command="/usr/bin/opensnitchd"
+command_args=" -rules-path /etc/opensnitchd/rules -ui-socket unix:///tmp/osui.sock -cpu-profile /tmp/cpu.profile -mem-profile /tmp/mem.profile"
+start_stop_daemon_args="--quiet"
+pidfile="/run/opensnitchd.pid"
+command_background=true
+
+depend() {
+        need net
+}
